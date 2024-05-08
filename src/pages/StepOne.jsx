@@ -10,7 +10,7 @@ const StepOne = () => {
           <div className="indicator">
             <div className="indicator__text">
               <span className="indicator__description">
-                Скидка за прохождение опроса:
+                скидка за прохождение опроса: 
               </span>
               <span className="indicator__value">15%</span>
             </div>
