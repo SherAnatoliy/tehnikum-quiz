@@ -24,7 +24,14 @@ const StepOne = () => {
           <div className="question">
             <AppHeader/>
     
-          <AppLabel/>
+          <AppLabel
+            inputLable="" 
+            inputPlaceholder="Ваш ответ" 
+            inputType="text" 
+            id="username" 
+            errorText="Введите ответ в правильном формате " 
+            hasError={true} 
+          />
         
             <AppButton/>
           </div>

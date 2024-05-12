@@ -1,10 +1,10 @@
 import React from 'react';
 
-export const AppButton = () => {
+export const AppButton = ({buttonText,isDisabled,buttonType}) => {
     return(
         <div>
-            <button disabled type="submit" id="next-btn">
-              Далее
+            <button disabled={isDisabled} type={buttonType === "submit" ? "submit" : "button"} id="next-btn">
+              {buttonText}
             </button>
         </div>
     )
