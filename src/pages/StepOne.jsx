@@ -1,7 +1,7 @@
 import React from "react";
 import { AppHeader } from "../components/AppHeader";
-import {AppInput} from "../components/AppInput"
 import { AppButton } from "../components/AppButton";
+import { AppInput } from "../components/AppInput";
 const StepOne = () => {
   return (
     <div className="container">
@@ -34,9 +34,9 @@ const StepOne = () => {
           />
         
             <AppButton
-              isDisabled={false} 
-              buttonType="button" 
-              buttonText="Далее"/>
+             isDisabled={false} 
+             buttonType="button" 
+             buttonText="Далее" />
           </div>
         </div>
       </div>
