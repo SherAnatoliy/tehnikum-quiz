@@ -22,7 +22,8 @@ const StepOne = () => {
             </div>
           </div>
           <div className="question">
-            <AppHeader/>
+            <AppHeader
+        />
     
           <AppInput
             inputLable="" 
