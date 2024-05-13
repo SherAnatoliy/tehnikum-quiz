@@ -1,7 +1,7 @@
 import React from "react";
-import { AppHeader } from "../components2/AppHeader";
-import { AppLabel } from "../components2/AppLabel";
-import { AppButton } from "../components2/AppButton";
+import { AppHeader } from "../components/AppHeader";
+import {AppInput} from "../components/AppInput"
+import { AppButton } from "../components/AppButton";
 const StepOne = () => {
   return (
     <div className="container">
@@ -24,7 +24,7 @@ const StepOne = () => {
           <div className="question">
             <AppHeader/>
     
-          <AppLabel
+          <AppInput
             inputLable="" 
             inputPlaceholder="Ваш ответ" 
             inputType="text" 
@@ -33,7 +33,10 @@ const StepOne = () => {
             hasError={true} 
           />
         
-            <AppButton/>
+            <AppButton
+              isDisabled={false} 
+              buttonType="button" 
+              buttonText="Далее"/>
           </div>
         </div>
       </div>
