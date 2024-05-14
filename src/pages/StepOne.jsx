@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AppHeader } from "../components/AppHeader";
 import { AppInput} from "../components/AppInput";
 import { AppButton } from "../components/AppButton";
 const StepOne = () => {
+  const [text, setText]=useState("")
+  const [textError,setTextError] = useState(false)
+  const handleClick =()=>{
+    if(!text){
+      setTextError(true)
+    }else{
+      setTextError(false)
+    } }
+
   return (
     <div className="container">
       <div className="wrapper">
@@ -26,18 +35,22 @@ const StepOne = () => {
         />
     
           <AppInput
+           hasError={textError}
             inputLable="" 
             inputPlaceholder="Ваш ответ" 
             inputType="text" 
             id="username" 
-            errorText="Введите ответ в правильном формате " 
-            hasError={true} 
+            errorText="Введите ваш ответ  " 
+            // hasError={false} 
+            inputValue={text}
+            inputChange={setText}
           />
         
             <AppButton
              isDisabled={false} 
              buttonType="button" 
-             buttonText="Далее" />
+             buttonText="Далее"
+             buttonClick={handleClick} />
           </div>
         </div>
       </div>
