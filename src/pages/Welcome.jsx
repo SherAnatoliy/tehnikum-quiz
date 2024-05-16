@@ -2,31 +2,51 @@ import React, { useEffect, useState } from "react";
 import { AppHeader } from "../components/AppHeader";
 import { AppButton } from "../components/AppButton";
 import { AppInput } from "../components/AppInput";
+// import { useHref } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 const Welcome = () => {
   const [name, setName]=useState("")
   const [phone, setPhone] = useState("")
   const [nameError,setNameError] = useState(false)
   const [phoneError,setPhoneError] = useState(false)
+  const nameRegex = /^([А-ЯЁа-яё]+|[A-Za-z]+)$/;
+  const phoneRegex = /^\+?\d{10,}$/;
+  const [buttonError, setButtonError] = useState(true)
+ const navigate = useNavigate();
 
-  // const [buttonError, setButtonError] = useState(true)
+
 
   const handleClick =()=>{
-      if(!name){
-        setNameError(true)
+    if (!nameRegex.test(name)) {
+      setNameError(true)
+    }else if(!phoneRegex.test(phone))
+      {
+     setPhoneError(true)
       }else{
         setNameError(false)
+        setPhoneError(false)
+        navigate("/step-one")
       }
-      !phone ? setPhoneError(true):setPhoneError(false) }
+    }
+  // const handleClick =()=>{
+  //     if (!nameRegex.test(name)) {
+  //       setNameError(true)
+  //     }else{
+  //       setNameError(false)
+  //     }
+  //     !phoneRegex.test(phone) ? setPhoneError(true):setPhoneError(false) }
+
   // console.log("ИМЯ", name);
   // console.log("Номер телефона",phone);
 
-  // useEffect(()=>{
-  //   if(!name || !phone){
-  //      setButtonError(true)
-  //   }else{
-  //     setButtonError(false)
-  //   }
-  // },[name,phone])
+  useEffect(()=>{
+    if(!name || !phone){
+       setButtonError(true)
+    }else{
+      setButtonError(false)
+    }
+  },[name,phone])
    
 
   
@@ -63,7 +83,7 @@ const Welcome = () => {
             />
 
             <AppButton 
-            isDisabled={false} 
+            isDisabled={buttonError} 
             buttonType="button" 
             buttonText="Далее" 
             buttonClick={handleClick}

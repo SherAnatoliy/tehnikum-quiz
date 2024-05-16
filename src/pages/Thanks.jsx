@@ -1,5 +1,6 @@
 import React from "react";
-
+// import { useNavigate } from "react-router-dom";
+// const navigate = useNavigate();
 const Thanks = () => {
   return (
     <div className="container">

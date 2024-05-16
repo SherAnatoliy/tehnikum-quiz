@@ -2,14 +2,19 @@ import React, { useEffect, useState } from "react";
 import { AppHeader } from "../components/AppHeader";
 import { AppInput} from "../components/AppInput";
 import { AppButton } from "../components/AppButton";
+// import { LinkButton } from "../components/LinkButton";
+import { useNavigate } from "react-router-dom";
 const StepOne = () => {
   const [text, setText]=useState("")
   const [textError,setTextError] = useState(false)
+  const russianTextRegex = /^[А-ЯЁа-яё0-9\s]+$/;
+  const navigate = useNavigate();
   const handleClick =()=>{
-    if(!text){
+    if(!russianTextRegex.test(text)){
       setTextError(true)
     }else{
       setTextError(false)
+      navigate("/step-two")
     } }
 
   return (
@@ -40,7 +45,7 @@ const StepOne = () => {
             inputPlaceholder="Ваш ответ" 
             inputType="text" 
             id="username" 
-            errorText="Введите ваш ответ  " 
+            errorText="Введите ваш ответ на русском языке  " 
             // hasError={false} 
             inputValue={text}
             inputChange={setText}
@@ -51,6 +56,7 @@ const StepOne = () => {
              buttonType="button" 
              buttonText="Далее"
              buttonClick={handleClick} />
+             {/* <LinkButton isDisabled={false} linkType="Button" linkText="Далее" linkBtn="/step-two"/> */}
           </div>
         </div>
       </div>

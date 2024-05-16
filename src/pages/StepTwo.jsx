@@ -1,4 +1,7 @@
 import React from "react";
+// import { useNavigate } from "react-router-dom";
+// const navigate = useNavigate();
+import { LinkButton } from "../components/LinkButton";
 
 const StepTwo = () => {
   return (
@@ -39,9 +42,10 @@ const StepTwo = () => {
                 <label htmlFor="variant-4">Ваш ответ</label>
               </li>
             </ul>
-            <button type="button" disabled id="next-btn">
+            {/* <button type="button" disabled id="next-btn">
               Далее
-            </button>
+            </button> */}
+                    <LinkButton isDisabled={false} linkType="Button" linkText="Далее" linkBtn="/step-three"/>
           </div>
         </div>
       </div>
