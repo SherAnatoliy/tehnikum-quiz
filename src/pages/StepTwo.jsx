@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 // const navigate = useNavigate();
 import { LinkButton } from "../components/LinkButton";
-
+import { ProgressBar } from "../components/PorgressBar";
+import {AppHeader} from "../components/AppHeader"
+import { AnswerItem } from "../components/AnswerItem";
 const StepTwo = () => {
+  const variants = [
+    {
+      id:"variant-1",
+      labelText:"Fronted"
+    },
+    {
+      id:"variant-2",
+      labelText:"BackEnd"
+    },
+    {
+      id:"variant-3",
+      labelText:"Ux"
+    },
+    {
+      id:"variant-4",
+      labelText:"Uzum"
+    },
+  ]
+  const [checkedAnswer,setCheckedAnswer] = useState(null)
   return (
     <div className="container">
       <div className="wrapper">
         <div className="variants-quiz">
-          <div className="indicator">
+          <ProgressBar/>
+        {/* <div className="indicator">
             <div className="indicator__text">
               <span className="indicator__description">
                 Скидка за прохождение опроса:
@@ -21,11 +43,15 @@ const StepTwo = () => {
               <div className="indicator__unit indicator__unit-3"></div>
               <div className="indicator__unit indicator__unit-4"></div>
             </div>
-          </div>
+          </div> */}
           <div className="question">
-            <h2>1. Занимательный вопрос</h2>
+            {/* <h2>1. Занимательный вопрос</h2> */}
+            <AppHeader
+            headerText="На каком курсе вы обучаетесь?"
+            headerType="h2"
+            />
             <ul className="variants">
-              <li className="variant-wrapper">
+              {/* <li className="variant-wrapper">
                 <input required type="radio" name="variant-1" id="variant-1" />
                 <label htmlFor="variant-1">Ваш ответ</label>
               </li>
@@ -40,7 +66,16 @@ const StepTwo = () => {
               <li className="variant-wrapper">
                 <input required type="radio" name="variant-4" id="variant-4" />
                 <label htmlFor="variant-4">Ваш ответ</label>
-              </li>
+              </li> */}
+              {variants.map((elem) => {
+              return<AnswerItem key={elem.id} 
+              id={elem.id} 
+              lableText={elem.labelText}
+              onChange={()=> setCheckedAnswer(elem.id)}
+              checked={checkedAnswer ===elem.id}
+              />
+              
+            })}
             </ul>
             {/* <button type="button" disabled id="next-btn">
               Далее
