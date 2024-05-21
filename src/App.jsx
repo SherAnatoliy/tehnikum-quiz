@@ -1,11 +1,13 @@
 import React from "react";
 import Welcome from "./pages/Welcome";
 import "./styles/main.css";
+import "./styles/second.css"
 import StepOne from "./pages/StepOne";
 import StepTwo from "./pages/StepTwo";
 import StepThree from "./pages/StepThree";
 import StepFour from "./pages/StepFour";
 import Thanks from "./pages/Thanks";
+import StepFive from "./pages/StepFive"
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // const App = () => {
@@ -36,6 +38,10 @@ const App = () => {
     {
       path:"/step-four",
       element:<StepFour/>
+    },
+    {
+      path:"/step-five",
+      element:<StepFive/>
     },
     {
       path:"/Thanks",

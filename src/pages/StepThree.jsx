@@ -68,12 +68,11 @@
 
 
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+
 import { LinkButton } from "../components/LinkButton";
 import { AnswerItem } from "../components/AnswerItem";
-import { ProgressBar } from "../components/PorgressBar";    
+import { ProgressBar } from "../components/ProgressBar";    
 import {AppHeader} from "../components/AppHeader"
-// const navigate = useNavigate();
 
 const StepThree = () => {
   const variants = [
@@ -104,33 +103,22 @@ const StepThree = () => {
   ];
 
   const [checkedAnswer, setCheckedAnswer] = useState(null);
-
+  if(checkedAnswer==null){
+    localStorage.setItem("img", "")
+  }else{
+    localStorage.setItem("img",JSON.stringify(checkedAnswer))
+  }
   return (
     <div className="container">
       <div className="wrapper">
         <div className="emoji-quiz">
-          {/* <div className="indicator">
-            <div className="indicator__text">
-              <span className="indicator__description">
-                Скидка за прохождение опроса:
-              </span>
-              <span className="indicator__value">15%</span>
-            </div>
-            <div className="indicator__progressbar">
-              <div className="indicator__unit indicator__unit-1 _active"></div>
-              <div className="indicator__unit indicator__unit-2 _active"></div>
-              <div className="indicator__unit indicator__unit-3"></div>
-              <div className="indicator__unit indicator__unit-4"></div>
-            </div>
-          </div> */}
-            <ProgressBar/>
+           <ProgressBar   currentStep="3"/>
+         
           <div className="question">
           <AppHeader
             headerText="3. Занимательный вопрос"
             headerType="h2"
             />
-            {/* <h2>3. Занимательный вопрос</h2> */}
-        
             <ul className="emoji-variants">
               {variants.map((elem) => (
                 <AnswerItem
@@ -139,8 +127,8 @@ const StepThree = () => {
                   imgSrc={elem.imgSrc}
                   imgAlt={elem.imgAlt}
                   labelText={elem.labelText}
-                  onChange={() => setCheckedAnswer(elem.id)}
-                  checked={checkedAnswer === elem.id}
+                  onChange={() => setCheckedAnswer( elem.imgAlt)}
+                  checked={checkedAnswer === elem.imgAlt}
                 />
               ))}
             </ul>
@@ -149,6 +137,7 @@ const StepThree = () => {
               linkType="Button"
               linkText="Далее"
               linkBtn="/step-four"
+              
             />
           </div>
         </div>

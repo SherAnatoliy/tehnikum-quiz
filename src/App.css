@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+
+.button-next {
+  background-color: #4CAF50; 
+  color: white;
+}
+
+.button-next:hover {
+  background-color: #45a049; 
+}
+.button-restart {
+  background-color: #f44336; 
+  color: white;
+}
+
+.button-restart:hover {
+  background-color: #e53935;}

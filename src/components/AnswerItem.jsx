@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const AnswerItem = ({id,lableText, onChange, checked, imgSrc, imgAlt, }) => {
+export const AnswerItem = ({id,labelText, onChange, checked, imgSrc, imgAlt, }) => {
     return(
         <li className="variant-wrapper">
         <input 
@@ -13,7 +13,7 @@ export const AnswerItem = ({id,lableText, onChange, checked, imgSrc, imgAlt, }) 
          />
         <label htmlFor={id}> 
         {imgSrc && <img src={imgSrc} alt={imgAlt} />}
-        {lableText} 
+        {labelText} 
         </label>
         
       </li>

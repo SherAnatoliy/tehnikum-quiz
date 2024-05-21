@@ -27,6 +27,9 @@ const Welcome = () => {
         setNameError(false)
         setPhoneError(false)
         navigate("/step-one")
+        // localStorage.setItem("NAME", JSON.stringify(name));
+        // localStorage.setItem("PHONE", JSON.stringify(phone));
+        localStorage.setItem('userInfo',JSON.stringify({name , phone}));
       }
     }
   // const handleClick =()=>{
@@ -83,7 +86,7 @@ const Welcome = () => {
             />
 
             <AppButton 
-            isDisabled={buttonError} 
+            isDisabled={false} 
             buttonType="button" 
             buttonText="Далее" 
             buttonClick={handleClick}

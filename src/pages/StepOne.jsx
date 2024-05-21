@@ -1,62 +1,62 @@
 import React, { useEffect, useState } from "react";
+import { ProgressBar } from "../components/ProgressBar";
 import { AppHeader } from "../components/AppHeader";
 import { AppInput} from "../components/AppInput";
-import { AppButton } from "../components/AppButton";
-// import { LinkButton } from "../components/LinkButton";
 import { useNavigate } from "react-router-dom";
+import { AppButton } from "../components/AppButton";
+
 const StepOne = () => {
-  const [text, setText]=useState("")
-  const [textError,setTextError] = useState(false)
-  const russianTextRegex = /^[А-ЯЁа-яё0-9\s]+$/;
+  // const [text, setText]=useState("");
+  // const [textError,setTextError] = useState(false);
+  let [userAnswer, setUserAnswer] =  useState ("");
+  let [useError, setUserError] = useState(false);
+  let [buttonError, setButtonError] = useState(true);
   const navigate = useNavigate();
+  const russianTextRegex = /^[А-ЯЁа-яё0-9\s]+$/;
   const handleClick =()=>{
-    if(!russianTextRegex.test(text)){
-      setTextError(true)
+    if(!russianTextRegex.test(userAnswer)){           
+      setUserError(true)
     }else{
-      setTextError(false)
+      setUserError(false)
       navigate("/step-two")
-    } }
+      localStorage.setItem("question1", JSON.stringify(userAnswer));
+    } };
+    useEffect(()=>{
+      if(!userAnswer){
+         setButtonError(true);
+      }else{
+        setButtonError(false)
+       
+      }
+    },[userAnswer]);
 
   return (
     <div className="container">
       <div className="wrapper">
         <div className="single-input-quiz">
-          <div className="indicator">
-            <div className="indicator__text">
-              <span className="indicator__description">
-                скидка за прохождение опроса: 
-              </span>
-              <span className="indicator__value">15%</span>
-            </div>
-            <div className="indicator__progressbar">
-              <div className="indicator__unit indicator__unit-1"></div>
-              <div className="indicator__unit indicator__unit-2"></div>
-              <div className="indicator__unit indicator__unit-3"></div>
-              <div className="indicator__unit indicator__unit-4"></div>
-            </div>
-          </div>
+
+            <ProgressBar  currentStep="1"/>
           <div className="question">
             <AppHeader
+            headerText= "Откуда вы про нас узнали?"
         />
-    
           <AppInput
-           hasError={textError}
             inputLable="" 
             inputPlaceholder="Ваш ответ" 
             inputType="text" 
             id="username" 
             errorText="Введите ваш ответ на русском языке  " 
-            // hasError={false} 
-            inputValue={text}
-            inputChange={setText}
+            inputValue={userAnswer}
+            hasError={useError}
+            inputChange={setUserAnswer}
           />
         
             <AppButton
-             isDisabled={false} 
+             isDisabled={buttonError} 
              buttonType="button" 
              buttonText="Далее"
              buttonClick={handleClick} />
-             {/* <LinkButton isDisabled={false} linkType="Button" linkText="Далее" linkBtn="/step-two"/> */}
+      
           </div>
         </div>
       </div>
@@ -65,3 +65,5 @@ const StepOne = () => {
 };
 
 export default StepOne;
+
+

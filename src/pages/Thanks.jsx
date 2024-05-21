@@ -1,4 +1,6 @@
 import React from "react";
+import { AppHeader } from "../components/AppHeader";
+import { Text } from "../components/Text";
 // import { useNavigate } from "react-router-dom";
 // const navigate = useNavigate();
 const Thanks = () => {
@@ -7,8 +9,14 @@ const Thanks = () => {
       <div className="wrapper">
         <div className="thanks">
           <img src="./img/bell.png" alt="bell" />
-          <h1>Спасибо за прохождение опроса!</h1>
-          <p>Получи свою скидку по ссылке ниже или другое блаблабла</p>
+          
+          {/* <h1>Спасибо за прохождение опроса!</h1> */}
+          
+          {/* <p>Получи свою скидку по ссылке ниже или другое блаблабла</p> */}
+          <Text
+          text="Получи свою скидку по ссылке ниже или другое блаблабла"
+          textType="p"
+          />
           <button type="button" id="get-link">
             Получить ссылку
           </button>

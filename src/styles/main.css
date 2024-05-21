@@ -333,18 +333,3 @@ button:enabled:active {
   content: "скорее да";
 }
 
-.thanks img {
-  width: 160px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  display: block;
-  margin: 0 auto 60px;
-}
-.thanks h1 {
-  margin-bottom: 32px;
-}
-.thanks p {
-  font-size: 18px;
-  text-align: center;
-  margin-bottom: 16px;
-}/*# sourceMappingURL=main.css.map */
